@@ -9,11 +9,12 @@ export default function MultiselectFilter({
   values,
   handleChange,
   defaultFilters,
+  label = "",
 }) {
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }} size="small">
-        <InputLabel id="demo-multiple-chip-label">Chip</InputLabel>
+        <InputLabel id="demo-multiple-chip-label">{label}</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"

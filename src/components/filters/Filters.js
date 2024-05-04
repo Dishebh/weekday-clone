@@ -10,6 +10,7 @@ import {
 } from "./filterUtils";
 import { TextField } from "@mui/material";
 import styles from "./Filters.module.css";
+import { connect } from "react-redux";
 
 function Filters() {
   const [roles, setRoles] = React.useState([]);
@@ -30,31 +31,37 @@ function Filters() {
   return (
     <div className={styles.filtersContainer}>
       <MultiselectFilter
+        label="Roles"
         values={roles}
         handleChange={(event) => handleChange(event, setRoles)}
         defaultFilters={roleFilters}
       />
       <MultiselectFilter
+        label="Experience"
         values={minExp}
         handleChange={(event) => handleChange(event, setMinExp)}
         defaultFilters={experienceFilters}
       />
       <MultiselectFilter
+        label="Stack"
         values={stack}
         handleChange={(event) => handleChange(event, setStack)}
         defaultFilters={stackFilters}
       />
       <MultiselectFilter
+        label="Location"
         values={location}
         handleChange={(event) => handleChange(event, setLocation)}
         defaultFilters={locationFilters}
       />
       <MultiselectFilter
+        label="Remote"
         values={jobType}
         handleChange={(event) => handleChange(event, setJobType)}
         defaultFilters={jobTypeFilters}
       />
       <MultiselectFilter
+        label="Salary"
         values={salary}
         handleChange={(event) => handleChange(event, setSalary)}
         defaultFilters={salaryFilters}
@@ -71,4 +78,8 @@ function Filters() {
   );
 }
 
-export default Filters;
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+});
+
+export default connect(mapStateToProps)(Filters);

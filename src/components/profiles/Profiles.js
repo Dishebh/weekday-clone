@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileCard from "./ProfileCard";
 import useFetch from "../../hooks/useFetch";
+import styles from "./Profiles.module.css";
 
 const requestOptions = {
   method: "POST",
@@ -26,8 +27,10 @@ function Profiles() {
   console.log(data);
 
   return (
-    <div>
-      <ProfileCard />
+    <div className={styles.container}>
+      {data.jdList?.map((profile) => (
+        <ProfileCard key={profile.id} profile={profile} />
+      ))}
     </div>
   );
 }

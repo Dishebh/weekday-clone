@@ -1,6 +1,6 @@
 import React from "react";
 
-function useFetch({ url, options = {} }) {
+function useFetch({ url, body = {} }) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -8,7 +8,13 @@ function useFetch({ url, options = {} }) {
   React.useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(url, options);
+        const response = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(body),
+        });
         const json = await response.json();
         setData(json);
       } catch (error) {
@@ -19,7 +25,7 @@ function useFetch({ url, options = {} }) {
     }
 
     fetchData();
-  }, [url, options]);
+  }, [url, body]);
 
   return {
     data,

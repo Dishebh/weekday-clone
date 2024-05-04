@@ -1,12 +1,18 @@
 export const roleFilters = [
   {
-    name: "Backend",
+    name: "frontend",
   },
   {
-    name: "Frontend",
+    name: "ios",
   },
   {
-    name: "Fullstack",
+    name: "android",
+  },
+  {
+    name: "tech lead",
+  },
+  {
+    name: "backend",
   },
 ];
 
@@ -15,7 +21,16 @@ export const locationFilters = [
     name: "Remote",
   },
   {
-    name: "Onsite",
+    name: "chennai",
+  },
+  {
+    name: "delhi ncr",
+  },
+  {
+    name: "mumbai",
+  },
+  {
+    name: "bangalore",
   },
 ];
 
@@ -195,21 +210,36 @@ export const stackFilters = [
 
 export const experienceFilters = [
   {
-    name: "0-1",
+    name: "0",
   },
   {
-    name: "1-3",
+    name: "1",
   },
   {
-    name: "3-5",
+    name: "2",
   },
   {
-    name: "5-7",
+    name: "3",
   },
   {
-    name: "7-10",
+    name: "4",
   },
   {
-    name: "10+",
+    name: "5",
+  },
+  {
+    name: "6",
+  },
+  {
+    name: "7",
+  },
+  {
+    name: "8",
+  },
+  {
+    name: "9",
+  },
+  {
+    name: "10",
   },
 ];

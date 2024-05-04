@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import MultiselectFilter from "./MultiselectFilter";
 import {
   experienceFilters,
@@ -10,9 +11,17 @@ import {
 } from "./filterUtils";
 import { TextField } from "@mui/material";
 import styles from "./Filters.module.css";
-import { connect } from "react-redux";
+import {
+  updateCompanyFilter,
+  updateExperienceFilter,
+  updateJobTypeFilter,
+  updateLocationFilter,
+  updateRoleFilter,
+  updateSalaryFilter,
+  updateStackFilter,
+} from "../../actions/actions";
 
-function Filters() {
+function Filters({ dispatch }) {
   const [roles, setRoles] = React.useState([]);
   const [minExp, setMinExp] = React.useState([]);
   const [stack, setStack] = React.useState([]);
@@ -21,11 +30,12 @@ function Filters() {
   const [salary, setSalary] = React.useState([]);
   const [companyName, setCompanyName] = React.useState("");
 
-  function handleChange(event, setFilters) {
+  function handleChange(event, setFilters, actionCreator) {
     const {
       target: { value },
     } = event;
     setFilters(typeof value === "string" ? value.split(",") : value);
+    dispatch(actionCreator(value)); // Dispatch action with the updated filter value
   }
 
   return (
@@ -33,37 +43,49 @@ function Filters() {
       <MultiselectFilter
         label="Roles"
         values={roles}
-        handleChange={(event) => handleChange(event, setRoles)}
+        handleChange={(event) =>
+          handleChange(event, setRoles, updateRoleFilter)
+        }
         defaultFilters={roleFilters}
       />
       <MultiselectFilter
         label="Experience"
         values={minExp}
-        handleChange={(event) => handleChange(event, setMinExp)}
+        handleChange={(event) =>
+          handleChange(event, setMinExp, updateExperienceFilter)
+        }
         defaultFilters={experienceFilters}
       />
       <MultiselectFilter
         label="Stack"
         values={stack}
-        handleChange={(event) => handleChange(event, setStack)}
+        handleChange={(event) =>
+          handleChange(event, setStack, updateStackFilter)
+        }
         defaultFilters={stackFilters}
       />
       <MultiselectFilter
         label="Location"
         values={location}
-        handleChange={(event) => handleChange(event, setLocation)}
+        handleChange={(event) =>
+          handleChange(event, setLocation, updateLocationFilter)
+        }
         defaultFilters={locationFilters}
       />
       <MultiselectFilter
         label="Remote"
         values={jobType}
-        handleChange={(event) => handleChange(event, setJobType)}
+        handleChange={(event) =>
+          handleChange(event, setJobType, updateJobTypeFilter)
+        }
         defaultFilters={jobTypeFilters}
       />
       <MultiselectFilter
         label="Salary"
         values={salary}
-        handleChange={(event) => handleChange(event, setSalary)}
+        handleChange={(event) =>
+          handleChange(event, setSalary, updateSalaryFilter)
+        }
         defaultFilters={salaryFilters}
       />
       <TextField
@@ -72,14 +94,13 @@ function Filters() {
         variant="outlined"
         size="small"
         value={companyName}
-        onChange={(event) => setCompanyName(event.target.value)}
+        onChange={(event) => {
+          setCompanyName(event.target.value);
+          dispatch(updateCompanyFilter(event.target.value)); // Dispatch action to update company name filter
+        }}
       />
     </div>
   );
 }
 
-const mapStateToProps = (state) => ({
-  filters: state.filters,
-});
-
-export default connect(mapStateToProps)(Filters);
+export default connect()(Filters); // Connect the component to the Redux store without mapStateToProps

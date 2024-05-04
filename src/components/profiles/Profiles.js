@@ -2,62 +2,67 @@ import React, { useEffect, useState } from "react";
 import ProfileCard from "./ProfileCard";
 import useFetch from "../../hooks/useFetch";
 import styles from "./Profiles.module.css";
+import { connect } from "react-redux";
+import { filterData } from "./filterDataUtils";
 
-const requestOptions = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
-
-function Profiles() {
-  const [options, setOptions] = useState({
+function Profiles({ filters }) {
+  const [body, setBody] = useState({
     limit: 10,
     offset: 0,
   });
 
   const { data, loading, error } = useFetch({
     url: "https://api.weekday.technology/adhoc/getSampleJdJSON",
-    options: requestOptions,
+    body,
   });
 
-  // useEffect(() => {
-  //   function handleScroll() {
-  //     if (
-  //       window.innerHeight + document.documentElement.scrollTop !==
-  //         document.documentElement.offsetHeight ||
-  //       loading ||
-  //       error
-  //     ) {
-  //       return;
-  //     }
-  //     setOptions((prevOptions) => ({
-  //       ...prevOptions,
-  //       offset: prevOptions.offset + prevOptions.limit,
-  //     }));
-  //   }
+  const [allData, setAllData] = useState([]);
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, [loading, error]);
+  const filteredData = filterData(allData, filters.filters);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    function handleScroll() {
+      if (
+        window.innerHeight + document.documentElement.scrollTop !==
+          document.documentElement.offsetHeight ||
+        loading ||
+        error
+      ) {
+        return;
+      }
+      setBody((prevBody) => ({
+        ...prevBody,
+        offset: prevBody.offset + prevBody.limit,
+      }));
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, error]);
+
+  useEffect(() => {
+    if (data) {
+      setAllData((prevData) => {
+        return [...prevData, ...data.jdList];
+      });
+    }
+  }, [data]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(data);
-
   return (
     <div className={styles.container}>
-      {data.jdList?.map((profile) => (
-        <ProfileCard key={profile.jdUid} profile={profile} />
+      {filteredData?.map((profile, index) => (
+        <ProfileCard key={index} profile={profile} />
       ))}
+      {loading && <div>Loading...</div>}
     </div>
   );
 }
 
-export default Profiles;
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+});
+
+export default connect(mapStateToProps)(Profiles);

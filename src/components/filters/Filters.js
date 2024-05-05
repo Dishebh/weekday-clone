@@ -71,6 +71,7 @@ function Filters({ dispatch }) {
         label="Search company name"
         variant="outlined"
         size="small"
+        sx={{ m: 1 }}
         value={companyName}
         onChange={(event) => {
           setCompanyName(event.target.value);

@@ -3,30 +3,24 @@ import { connect } from "react-redux";
 import MultiselectFilter from "./MultiselectFilter";
 import {
   experienceFilters,
-  jobTypeFilters,
   locationFilters,
   roleFilters,
   salaryFilters,
-  stackFilters,
 } from "./filterUtils";
 import { TextField } from "@mui/material";
 import styles from "./Filters.module.css";
 import {
   updateCompanyFilter,
   updateExperienceFilter,
-  updateJobTypeFilter,
   updateLocationFilter,
   updateRoleFilter,
   updateSalaryFilter,
-  updateStackFilter,
 } from "../../actions/actions";
 
 function Filters({ dispatch }) {
   const [roles, setRoles] = React.useState([]);
   const [minExp, setMinExp] = React.useState([]);
-  const [stack, setStack] = React.useState([]);
   const [location, setLocation] = React.useState([]);
-  const [jobType, setJobType] = React.useState([]);
   const [salary, setSalary] = React.useState([]);
   const [companyName, setCompanyName] = React.useState("");
 

@@ -1,6 +1,7 @@
 .container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 4 columns with minimum width of 200px, adjusting to fit container */
     gap: 20px; /* Gap between cards */
     padding: 10px 20px;
-}
+  }
+  

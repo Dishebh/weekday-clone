@@ -18,7 +18,7 @@ export const roleFilters = [
 
 export const locationFilters = [
   {
-    name: "Remote",
+    name: "remote",
   },
   {
     name: "chennai",
@@ -48,163 +48,19 @@ export const jobTypeFilters = [
 
 export const salaryFilters = [
   {
-    name: "0-20k",
+    name: "20",
   },
   {
-    name: "20k-40k",
+    name: "40",
   },
   {
-    name: "40k-60k",
+    name: "60",
   },
   {
-    name: "60k-80k",
+    name: "80",
   },
   {
-    name: "80k-100k",
-  },
-  {
-    name: "100k+",
-  },
-];
-
-export const stackFilters = [
-  {
-    name: "React",
-  },
-  {
-    name: "Vue",
-  },
-  {
-    name: "Angular",
-  },
-  {
-    name: "Node",
-  },
-  {
-    name: "Express",
-  },
-  {
-    name: "Django",
-  },
-  {
-    name: "Flask",
-  },
-  {
-    name: "Spring",
-  },
-  {
-    name: "Laravel",
-  },
-  {
-    name: "Ruby on Rails",
-  },
-  {
-    name: "ASP.NET",
-  },
-  {
-    name: "jQuery",
-  },
-  {
-    name: "Bootstrap",
-  },
-  {
-    name: "Tailwind",
-  },
-  {
-    name: "Materialize",
-  },
-  {
-    name: "Bulma",
-  },
-  {
-    name: "Sass",
-  },
-  {
-    name: "Less",
-  },
-  {
-    name: "Stylus",
-  },
-  {
-    name: "Redux",
-  },
-  {
-    name: "MobX",
-  },
-  {
-    name: "Vuex",
-  },
-  {
-    name: "GraphQL",
-  },
-  {
-    name: "RESTful",
-  },
-  {
-    name: "SOAP",
-  },
-  {
-    name: "Jest",
-  },
-  {
-    name: "Mocha",
-  },
-  {
-    name: "Cypress",
-  },
-  {
-    name: "Selenium",
-  },
-  {
-    name: "Jasmine",
-  },
-  {
-    name: "Karma",
-  },
-  {
-    name: "Enzyme",
-  },
-  {
-    name: "Puppeteer",
-  },
-  {
-    name: "Playwright",
-  },
-  {
-    name: "Cucumber",
-  },
-  {
-    name: "Jira",
-  },
-  {
-    name: "Trello",
-  },
-  {
-    name: "Asana",
-  },
-  {
-    name: "Slack",
-  },
-  {
-    name: "Teams",
-  },
-  {
-    name: "Zoom",
-  },
-  {
-    name: "Meet",
-  },
-  {
-    name: "Skype",
-  },
-  {
-    name: "Webex",
-  },
-  {
-    name: "Git",
-  },
-  {
-    name: "SVN",
+    name: "100",
   },
 ];
 

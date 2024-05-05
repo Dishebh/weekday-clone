@@ -20,6 +20,11 @@ function ProfileCard({ profile }) {
       <Typography variant="subtitle1">About Company:</Typography>
       <Typography variant="body2">About us:</Typography>
       <Typography variant="body2">{profile.jobDetailsFromCompany}</Typography>
+      {profile.minExp && (
+        <Typography variant="subtitle1">
+          Min. Experience: {profile.minExp} years
+        </Typography>
+      )}
     </div>
   );
 }

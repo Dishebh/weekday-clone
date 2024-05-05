@@ -37,7 +37,7 @@ const filterReducer = (state = initialState, action) => {
     case UPDATE_COMPANY_FILTER:
       return {
         ...state,
-        filters: { ...state.filters, company: action.company },
+        filters: { ...state.filters, companyName: action.company },
       };
     case UPDATE_SALARY_FILTER:
       return {

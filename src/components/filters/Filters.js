@@ -57,14 +57,6 @@ function Filters({ dispatch }) {
         defaultFilters={experienceFilters}
       />
       <MultiselectFilter
-        label="Stack"
-        values={stack}
-        handleChange={(event) =>
-          handleChange(event, setStack, updateStackFilter)
-        }
-        defaultFilters={stackFilters}
-      />
-      <MultiselectFilter
         label="Location"
         values={location}
         handleChange={(event) =>

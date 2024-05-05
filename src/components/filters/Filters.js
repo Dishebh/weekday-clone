@@ -65,14 +65,6 @@ function Filters({ dispatch }) {
         defaultFilters={locationFilters}
       />
       <MultiselectFilter
-        label="Remote"
-        values={jobType}
-        handleChange={(event) =>
-          handleChange(event, setJobType, updateJobTypeFilter)
-        }
-        defaultFilters={jobTypeFilters}
-      />
-      <MultiselectFilter
         label="Salary"
         values={salary}
         handleChange={(event) =>

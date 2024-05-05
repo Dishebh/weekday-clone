@@ -5,16 +5,15 @@ import styles from "./Profiles.module.css";
 import { connect } from "react-redux";
 import { filterData } from "./filterDataUtils";
 
+const url = "https://api.weekday.technology/adhoc/getSampleJdJSON";
+
 function Profiles({ filters }) {
   const [body, setBody] = useState({
     limit: 10,
     offset: 0,
   });
 
-  const { data, loading, error } = useFetch({
-    url: "https://api.weekday.technology/adhoc/getSampleJdJSON",
-    body,
-  });
+  const { data, loading, error } = useFetch({ url, body });
 
   const [allData, setAllData] = useState([]);
 
@@ -23,13 +22,12 @@ function Profiles({ filters }) {
   useEffect(() => {
     function handleScroll() {
       if (
-        window.innerHeight + document.documentElement.scrollTop !==
-          document.documentElement.offsetHeight ||
-        loading ||
-        error
+        window.innerHeight + document.documentElement.scrollTop + 10 <
+        document.documentElement.offsetHeight
       ) {
         return;
       }
+
       setBody((prevBody) => ({
         ...prevBody,
         offset: prevBody.offset + prevBody.limit,
